@@ -12,8 +12,8 @@ import java.util.Date;
 import java.util.List;
 
 public class MyTagirqaBot extends TelegramLongPollingBot {
-    private static final String botToken = "725216327:AAEc3d2N6q0SRz7DXVsW4TvvjB_c772iiZ8";
-    private static final String botName = "tagirqa_bot";
+    private static final String botToken = "";
+    private static final String botName = "";
     private String sign;
 
     public void onUpdateReceived(Update update) {

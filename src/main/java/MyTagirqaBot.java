@@ -5,16 +5,47 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 public class MyTagirqaBot extends TelegramLongPollingBot {
-    private static final String botToken = "725216327:AAEc3d2N6q0SRz7DXVsW4TvvjB_c772iiZ8";
-    private static final String botName = "tagirqa_bot";
+    private String botToken;
+    private String botName;
+
     private String sign;
+    private String aries = "https://horo.mail.ru/prediction/aries/today/";
+    private String taurus = "https://horo.mail.ru/prediction/taurus/today/";
+    private String gemini = "https://horo.mail.ru/prediction/gemini/today/";
+    private String cancer = "https://horo.mail.ru/prediction/cancer/today/";
+    private String leo = "https://horo.mail.ru/prediction/leo/today/";
+    private String virgo = "https://horo.mail.ru/prediction/virgo/today/";
+    private String libra = "https://horo.mail.ru/prediction/libra/today/";
+    private String scorpio = "https://horo.mail.ru/prediction/scorpio/today/";
+    private String sagittarius = "https://horo.mail.ru/prediction/sagittarius/today/";
+    private String capricorn = "https://horo.mail.ru/prediction/capricorn/today/";
+    private String aquarius = "https://horo.mail.ru/prediction/aquarius/today/";
+    private String pisces = "https://horo.mail.ru/prediction/pisces/today/";
+
+
+    public MyTagirqaBot() {
+        FileInputStream fis;
+        Properties prop = new Properties();
+        try {
+            fis = new FileInputStream("config.properties");
+            prop.load(fis);
+
+            this.botToken = prop.getProperty("bot_token");
+            this.botName = prop.getProperty("bot_name");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -89,8 +120,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(aries)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -99,8 +130,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(taurus)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -109,8 +140,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(gemini)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -119,8 +150,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(cancer)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -129,8 +160,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(leo)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -139,8 +170,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(virgo)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -149,8 +180,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(libra)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -159,8 +190,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(scorpio)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -169,8 +200,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(sagittarius)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -179,8 +210,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(capricorn)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -189,8 +220,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(aquarius)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -199,8 +230,8 @@ public class MyTagirqaBot extends TelegramLongPollingBot {
                     try {
                         execute(new SendMessage()
                                 .setChatId(chatId)
-                                .setText("hello!"));
-                    } catch (TelegramApiException e) {
+                                .setText(ParserSite.textToTelegram(pisces)));
+                    } catch (TelegramApiException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
